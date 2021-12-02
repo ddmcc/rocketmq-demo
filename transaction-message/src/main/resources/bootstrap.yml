@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: transaction-message
+  cloud:
+    nacos:
+      config:
+        server-addr: 150.158.49.105:8848
+        file-extension: yml
