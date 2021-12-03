@@ -37,13 +37,15 @@ public class OrderListener implements TransactionListener {
     @Override
     public LocalTransactionState executeLocalTransaction(Message message, Object o) {
         log.info("开始执行本地事务.....");
-        String transactionId = message.getTransactionId();
+
         OrderDTO orderDTO = JSONObject.parseObject(message.getBody(), OrderDTO.class);
 
         Order order = new Order();
         order.setGoodsId(orderDTO.getGoodsId());
         order.setId(orderDTO.getId());
         order.setCreateAt(new Date());
+
+        String transactionId = message.getTransactionId();
         orderService.createOrder(order, transactionId);
         return LocalTransactionState.COMMIT_MESSAGE;
     }
