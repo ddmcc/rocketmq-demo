@@ -40,4 +40,8 @@ public class Cart {
      */
     private Date createAr;
 
+    private Integer status;
+
+    private String orderId;
+
 }
